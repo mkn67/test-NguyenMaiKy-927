@@ -5,8 +5,8 @@ import { Heart, MessageCircle, Share2, Bookmark, Plus, Check } from "lucide-reac
 import { useAppContext } from "@/context/AppContext";
 import { VideoItem } from "@/data/mockVideos";
 
-export default function InteractionBar({ video }: { video: VideoItem }) {
-  const { likes, toggleLike } = useAppContext();
+export default function InteractionBar({ video, onOpenComments }: { video: VideoItem; onOpenComments: () => void }) {
+  const { likes, toggleLike, comments } = useAppContext();
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isFollowed, setIsFollowed] = useState(false);
   const [showShareToast, setShowShareToast] = useState(false);
@@ -42,7 +42,6 @@ export default function InteractionBar({ video }: { video: VideoItem }) {
 
   return (
     <div className="flex flex-col items-center gap-4 text-white relative">
-      {/* Avatar Tác giả & Nút Follow */}
       <div className="relative mb-3 flex flex-col items-center">
         <div className="w-11 h-11 rounded-full border-2 border-white bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center font-bold text-sm text-white shadow-lg select-none">
           {video.authorName.replace("@", "").substring(0, 2).toUpperCase()}
@@ -82,7 +81,7 @@ export default function InteractionBar({ video }: { video: VideoItem }) {
       <button
         onClick={(e) => {
           e.stopPropagation();
-          alert("Mock Comment: Tính năng bình luận đang được phát triển!");
+          onOpenComments();
         }}
         className="flex flex-col items-center group cursor-pointer"
         aria-label="Bình luận"
@@ -91,7 +90,7 @@ export default function InteractionBar({ video }: { video: VideoItem }) {
           <MessageCircle size={24} className="transition-transform group-hover:scale-110" />
         </div>
         <span className="text-xs font-medium mt-1 drop-shadow-md text-gray-200">
-          {Math.floor(currentLike.count / 8).toLocaleString()}
+          {(comments[video.id]?.length || 0).toLocaleString()}
         </span>
       </button>
 

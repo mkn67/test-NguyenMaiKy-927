@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { TrendingUp, UserPlus, UserCheck } from "lucide-react";
+import { UserPlus, UserCheck } from "lucide-react";
 
 interface Account {
   id: string;
@@ -11,25 +11,13 @@ interface Account {
   isFollowed: boolean;
 }
 
-interface Hashtag {
-  tag: string;
-  views: string;
-}
-
 export default function SuggestedAccounts() {
   const [accounts, setAccounts] = useState<Account[]>([
-    { id: "1", name: "Nguyễn Văn A", username: "@tech_reviewer", avatar: "TA", isFollowed: false },
-    { id: "2", name: "Lê Thị B", username: "@nature_wild", avatar: "NW", isFollowed: true },
-    { id: "3", name: "Trần Minh C", username: "@foodie_review", avatar: "FR", isFollowed: false },
-    { id: "4", name: "Phạm Hồng D", username: "@dance_queen", avatar: "DQ", isFollowed: false },
+    { id: "1", name: "Sarah Jenkins", username: "@sarah.unbox", avatar: "SJ", isFollowed: false },
+    { id: "2", name: "David Atten", username: "@nature.explorer", avatar: "DE", isFollowed: true },
+    { id: "3", name: "Gordon Ramsey", username: "@kitchen.master", avatar: "GR", isFollowed: false },
+    { id: "4", name: "Zach King", username: "@magic.shorts", avatar: "ZK", isFollowed: false },
   ]);
-
-  const hashtags: Hashtag[] = [
-    { tag: "peacefulmorning", views: "1.2M lượt xem" },
-    { tag: "futuretech2026", views: "850K lượt xem" },
-    { tag: "pastaheaven", views: "2.4M lượt xem" },
-    { tag: "dancechallenge", views: "5.6M lượt xem" },
-  ];
 
   const toggleFollow = (id: string) => {
     setAccounts((prev) =>
@@ -78,28 +66,6 @@ export default function SuggestedAccounts() {
                   </>
                 )}
               </button>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Divider */}
-      <div className="border-t border-gray-800 w-full" />
-
-      {/* Trending Topics */}
-      <div>
-        <h4 className="text-gray-400 font-bold text-xs uppercase tracking-wider mb-3 select-none flex items-center gap-2">
-          <TrendingUp size={14} className="text-red-500" />
-          <span>Xu hướng nổi bật</span>
-        </h4>
-        <div className="flex flex-col gap-3">
-          {hashtags.map((hash) => (
-            <div
-              key={hash.tag}
-              className="flex flex-col p-2.5 rounded-lg bg-gray-900/40 hover:bg-gray-900 border border-gray-800/20 hover:border-gray-800 transition cursor-pointer"
-            >
-              <span className="text-sm font-semibold text-white/90">#{hash.tag}</span>
-              <span className="text-xs text-gray-500 mt-0.5">{hash.views}</span>
             </div>
           ))}
         </div>

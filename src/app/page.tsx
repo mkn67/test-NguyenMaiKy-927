@@ -24,7 +24,7 @@ export default function HomePage() {
           </div>
         </header>
 
-        <div className="relative w-full h-full lg:h-[90vh] lg:max-w-[calc(90vh*9/16)] lg:aspect-[9/16] lg:my-auto bg-gray-900 lg:border border-gray-800 lg:rounded-xl overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.05)]">
+        <div className="relative w-full h-[100dvh] lg:h-[90vh] lg:max-w-[calc(90vh*9/16)] lg:aspect-[9/16] lg:my-auto bg-gray-900 lg:border border-gray-800 lg:rounded-xl overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.05)]">
           <FeedContainer videos={mockVideo} />
         </div>
       </main>
@@ -32,7 +32,7 @@ export default function HomePage() {
       <aside className="hidden xl:flex w-80 p-6 border-l border-gray-800 bg-[#0f0f0f] flex-col">
         <SuggestedAccounts />
       </aside>
-      <BottomNav className="block lg:hidden" />
+      <BottomNav className="lg:hidden" />
     </div>
   );
 }
